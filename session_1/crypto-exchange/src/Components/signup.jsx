@@ -1,10 +1,9 @@
-import "../Stylings/login.css";
+import "../Stylings/signup.css";
 
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
-import { USERS } from "../Utils/users";
-
-const Signup = () => {
+const Signup = ({users, setUsers}) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,20 +36,20 @@ const Signup = () => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (password.length < 8) {
       setPasswordError("Password should be greater than 8 digits");
       return;
     }
-    
+
     user = { name, email, password, homeAddress, cnic };
-    USERS.push(user);
+    const finalList = [user, ...users];
+    setUsers(finalList);
 
-    console.log(USERS);
-
-    e.preventDefault();
+    toast.success("Signup successful");
   };
 
-  
   return (
     <div className="login-form">
       <div className="form-container">
@@ -82,7 +81,11 @@ const Signup = () => {
                 value={password}
                 onChange={handlePasswordChange}
               />
-              <p className="error-msg" style={{ 'fontSize': '10px' }}>{passwordError}</p>
+              {passwordError && (
+                <p className="error-msg">
+                  {passwordError}
+                </p>
+              )}
             </div>
           </div>
           <div className="field-container">
@@ -102,10 +105,14 @@ const Signup = () => {
               <label className="label">CNIC</label>
             </div>
             <div className="input-container">
-              <input type="file" onChange={handleCnicChange} />
+              <input
+                type="file"
+                className="file-input"
+                onChange={handleCnicChange}
+              />
             </div>
           </div>
-          <input type="submit" />
+          <input type="submit" className="button buttonHover" />
         </form>
       </div>
     </div>
