@@ -15,6 +15,11 @@ const Login = ({ setLogin, users }) => {
     setPassword(e.target.value);
   };
 
+  const clearInput = () => {
+    setEmail("");
+    setPassword("");
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -24,6 +29,7 @@ const Login = ({ setLogin, users }) => {
     if (user?.email === email && user?.password === password) {
       toast.success("Logged in successfully");
       setLogin(true);
+      clearInput();
       return;
     }
 
