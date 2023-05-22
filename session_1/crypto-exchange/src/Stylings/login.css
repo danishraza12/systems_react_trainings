@@ -1,0 +1,37 @@
+.login-form {
+  text-align: center;
+}
+form {
+  border: 2px solid gray;
+  padding: 30px;
+  border-radius: 5px;
+}
+.form-container {
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+.label {
+  font-size: 15px;
+  padding: 10px;
+}
+.field-container {
+  display: flex;
+  text-align: left;
+}
+.label-container {
+  align-items: left;
+  width: 50%;
+}
+.login-status {
+  font-size: 15px;
+  color: red;
+  padding: 5px;
+  margin-left: 5px;
+  align-items: center;
+}
