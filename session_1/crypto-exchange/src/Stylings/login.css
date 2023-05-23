@@ -21,13 +21,18 @@ form {
   font-size: 15px;
   padding: 10px;
 }
+.incorrect-attempts {
+  font-size: 12px;
+  padding: 10px;
+  color: red;
+}
 .field-container {
   display: flex;
   text-align: left;
 }
 .label-container {
   align-items: left;
-  width: 50%;
+  width: 60%;
 }
 .login-status {
   font-size: 15px;

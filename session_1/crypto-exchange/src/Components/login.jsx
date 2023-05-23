@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 const Login = ({ setLogin, users }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [incorrectAttempts, setIncorrectAttempts] = useState(0);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -40,7 +41,7 @@ const Login = ({ setLogin, users }) => {
     }
 
     if (user?.incorrectAttempts === 3) {
-      toast.error("USER_NAME is blocked");
+      toast.error(`USER_NAME is blocked`);
       return;
     }
 
@@ -54,6 +55,7 @@ const Login = ({ setLogin, users }) => {
     users?.map((user) => {
       if (user.email === email) {
         user.incorrectAttempts = user.incorrectAttempts + 1;
+        setIncorrectAttempts(user.incorrectAttempts);
       }
 
       return user;
@@ -91,6 +93,16 @@ const Login = ({ setLogin, users }) => {
                 required
                 onChange={handlePasswordChange}
               />
+            </div>
+          </div>
+
+          <div className="field-container">
+            <div className="label-container">
+              {incorrectAttempts > 0 && (
+                <label className="incorrect-attempts">
+                  Incorrect Attempts: {incorrectAttempts}
+                </label>
+              )}
             </div>
           </div>
           <div className="field-container"></div>
