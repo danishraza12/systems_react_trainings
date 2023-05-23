@@ -86,7 +86,7 @@ const Signup = ({ users, setUsers }) => {
             </div>
             <div>
               <input
-                type="text"
+                type="password"
                 value={password}
                 onChange={handlePasswordChange}
               />

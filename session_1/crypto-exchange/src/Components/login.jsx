@@ -86,7 +86,7 @@ const Login = ({ setLogin, users }) => {
             </div>
             <div>
               <input
-                type="text"
+                type="password"
                 value={password}
                 required
                 onChange={handlePasswordChange}
