@@ -18,7 +18,15 @@ const Login = ({ setLogin, users }) => {
   const clearInput = () => {
     setEmail("");
     setPassword("");
-  }
+
+    users?.map((user) => {
+      if (user.email === email) {
+        user.incorrectAttempts = 0;
+      }
+
+      return user;
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,12 +34,28 @@ const Login = ({ setLogin, users }) => {
     const user = users?.find((user) => user.email === email);
     console.log(user);
 
+    if (!user) {
+      toast.error("Incorrect Credentials");
+    }
+
+    if (user?.incorrectAttempts === 3) {
+      toast.success("USER_NAME is blocked");
+    }
+
     if (user?.email === email && user?.password === password) {
       toast.success("Logged in successfully");
       setLogin(true);
       clearInput();
       return;
     }
+
+    users?.map((user) => {
+      if (user.email === email) {
+        user.incorrectAttempts = user.incorrectAttempts + 1;
+      }
+
+      return user;
+    });
 
     toast.error("Incorrect Credentials");
   };
@@ -67,8 +91,7 @@ const Login = ({ setLogin, users }) => {
               />
             </div>
           </div>
-          <div className="field-container">
-          </div>
+          <div className="field-container"></div>
           <input type="submit" value="Login" />
         </form>
       </div>

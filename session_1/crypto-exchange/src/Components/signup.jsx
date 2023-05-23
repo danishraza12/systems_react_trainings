@@ -3,8 +3,9 @@ import "../Stylings/signup.css";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
-const Signup = ({users, setUsers}) => {
+const Signup = ({ users, setUsers }) => {
   const [name, setName] = useState("");
+  const [nameError, setNameError] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [homeAddress, setHomeAddress] = useState("");
@@ -38,12 +39,19 @@ const Signup = ({users, setUsers}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    const letterRegex = /^[a-z]+$/i;
+
     if (password.length < 8) {
       setPasswordError("Password should be greater than 8 digits");
       return;
     }
+    if (!letterRegex.test(name)) {
+      setNameError("Name cannot contain numbers or special characters");
+      return;
+    }
 
-    user = { name, email, password, homeAddress, cnic };
+    const incorrectAttempts = 0;
+    user = { name, email, password, homeAddress, cnic, incorrectAttempts };
     const finalList = [user, ...users];
     setUsers(finalList);
 
@@ -61,6 +69,7 @@ const Signup = ({users, setUsers}) => {
             </div>
             <div>
               <input type="text" value={name} onChange={handleNameChange} />
+              {nameError && <p className="error-msg">{nameError}</p>}
             </div>
           </div>
           <div className="field-container">
@@ -81,11 +90,7 @@ const Signup = ({users, setUsers}) => {
                 value={password}
                 onChange={handlePasswordChange}
               />
-              {passwordError && (
-                <p className="error-msg">
-                  {passwordError}
-                </p>
-              )}
+              {passwordError && <p className="error-msg">{passwordError}</p>}
             </div>
           </div>
           <div className="field-container">
