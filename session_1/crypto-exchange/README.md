@@ -2,10 +2,12 @@
 
 ## Signup Screen
 Signup Screen with header and footer
+
 ![image](https://github.com/danishraza12/systems_react_trainings/assets/60378949/819835b6-29e7-4607-95aa-f40c370782b8)
 
 ### Signup Screen Validation
 Validation added on name and phone number field
+
 ![image](https://github.com/danishraza12/systems_react_trainings/assets/60378949/191431c5-62c7-47c9-96d2-da009bc007d5)
 
 ### Signup Successful
