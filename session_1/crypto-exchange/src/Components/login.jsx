@@ -36,10 +36,12 @@ const Login = ({ setLogin, users }) => {
 
     if (!user) {
       toast.error("Incorrect Credentials");
+      return;
     }
 
     if (user?.incorrectAttempts === 3) {
-      toast.success("USER_NAME is blocked");
+      toast.error("USER_NAME is blocked");
+      return;
     }
 
     if (user?.email === email && user?.password === password) {
