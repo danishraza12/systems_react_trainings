@@ -1,0 +1,37 @@
+.blogs-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.blogs-heading-container {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.blogs-heading {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.table-container {
+  width: 80%;
+}
+
+.button-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.left {
+  align-items: end;
+}
+
+.right {
+  align-items: end;
+  justify-content: end;
+}
